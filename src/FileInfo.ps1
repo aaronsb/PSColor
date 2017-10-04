@@ -29,44 +29,46 @@ function Write-Color-LS
 {
     param ([string]$color = "white", $file)
 
-    $length = if ($file -is [System.IO.DirectoryInfo]) { $null } else { $file.length }
-    Write-host ("{0,-7} {1,25} {2,10} {3}" -f $file.mode, ([String]::Format("{0,10}  {1,8}", $file.LastWriteTime.ToString("d"), $file.LastWriteTime.ToString("t"))), (Write-FileLength $length), $file.name) -foregroundcolor $color
+    Write-host ("{0,-7} {1,25} {2,10} {3}" -f $file.mode, ([String]::Format("{0,10}  {1,8}", $file.LastWriteTime.ToString("d"), $file.LastWriteTime.ToString("t"))), (Write-FileLength $file.length), $file.name) -foregroundcolor $color
 }
 
 function FileInfo {
     param (
         [Parameter(Mandatory=$True,Position=1)]
-        [System.IO.FileSystemInfo] $file
+        $file
     )
 
     $regex_opts = ([System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
-	
+
     $hidden = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Hidden.Pattern, $regex_opts)
     $code = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Code.Pattern, $regex_opts)
     $executable = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Executable.Pattern, $regex_opts)
+	$machine = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Machine.Pattern, $regex_opts)
     $text_files = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Text.Pattern, $regex_opts)
+	$image_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Image.Pattern, $regex_opts)
+	$audio_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Audio.Pattern, $regex_opts)
+	$video_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Video.Pattern, $regex_opts)
+	$office_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Office.Pattern, $regex_opts)
     $compressed = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Compressed.Pattern, $regex_opts)
 
-	if ($file -is [System.IO.DirectoryInfo])
-	{
-	    $currentdir = $file.Parent.FullName
-	} else 
-	{
-		$currentdir = $file.DirectoryName
-	}
-    if($script:directory -ne $currentdir)
+    if($script:showHeader)
     {
-	   $script:directory = $currentdir
        Write-Host
-       Write-Host "    Directory: " -noNewLine	   
-       Write-Host " $currentdir`n" -foregroundcolor "Green"
+       Write-Host "    Directory: " -noNewLine
+       Write-Host " $(pwd)`n" -foregroundcolor "Green"
        Write-Host "Mode                LastWriteTime     Length Name"
        Write-Host "----                -------------     ------ ----"
+       $script:showHeader=$false
     }
 
     if ($hidden.IsMatch($file.Name))
@@ -85,9 +87,29 @@ function FileInfo {
     {
         Write-Color-LS $global:PSColor.File.Executable.Color $file
     }
+	elseif ($machine.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Machine.Color $file
+    }
     elseif ($text_files.IsMatch($file.Name))
     {
         Write-Color-LS $global:PSColor.File.Text.Color $file
+    }
+	elseif ($image_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Image.Color $file
+    }
+	elseif ($audio_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Audio.Color $file
+    }
+	elseif ($video_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Video.Color $file
+    }
+	elseif ($office_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Office.Color $file
     }
     elseif ($compressed.IsMatch($file.Name))
     {
