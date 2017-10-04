@@ -46,8 +46,18 @@ function FileInfo {
         $global:PSColor.File.Code.Pattern, $regex_opts)
     $executable = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Executable.Pattern, $regex_opts)
+	$machine = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Machine.Pattern, $regex_opts)
     $text_files = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Text.Pattern, $regex_opts)
+	$image_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Image.Pattern, $regex_opts)
+	$audio_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Audio.Pattern, $regex_opts)
+	$video_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Video.Pattern, $regex_opts)
+	$office_files = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Office.Pattern, $regex_opts)
     $compressed = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Compressed.Pattern, $regex_opts)
 
@@ -77,9 +87,29 @@ function FileInfo {
     {
         Write-Color-LS $global:PSColor.File.Executable.Color $file
     }
+	elseif ($machine.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Machine.Color $file
+    }
     elseif ($text_files.IsMatch($file.Name))
     {
         Write-Color-LS $global:PSColor.File.Text.Color $file
+    }
+	elseif ($image_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Image.Color $file
+    }
+	elseif ($audio_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Audio.Color $file
+    }
+	elseif ($video_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Video.Color $file
+    }
+	elseif ($office_files.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Office.Color $file
     }
     elseif ($compressed.IsMatch($file.Name))
     {
