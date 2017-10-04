@@ -24,10 +24,15 @@ $global:PSColor = @{
         Default    = @{ Color = 'White' }
         Directory  = @{ Color = 'Cyan'}
         Hidden     = @{ Color = 'DarkGray'; Pattern = '^\.' } 
-        Code       = @{ Color = 'Magenta'; Pattern = '\.(java|c|cpp|cs|js|css|html)$' }
-        Executable = @{ Color = 'Red'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg)$' }
+        Code       = @{ Color = 'Magenta'; Pattern = '\.(java|c|cpp|cs|js|css|html|py)$' }
+        Executable = @{ Color = 'Red'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg|msi)$' }
+        Machine    = @{ Color = 'Blue'; Pattern = '\.(bin|dll|iso|img|ovf|ova)$' }
         Text       = @{ Color = 'Yellow'; Pattern = '\.(txt|cfg|conf|ini|csv|log|config|xml|yml|md|markdown)$' }
-        Compressed = @{ Color = 'Green'; Pattern = '\.(zip|tar|gz|rar|jar|war)$' }
+	Image      = @{ Color = 'DarkYellow'; Pattern = '\.(jpg|gif|bmp|jpeg|tif|tiff|png|psd)$' }
+	Audio      = @{ Color = 'DarkBlue'; Pattern = '\.(mp3|aif|wav|wma|aif|iff|m4a)$' }
+	Video      = @{ Color = 'DarkCyan'; Pattern = '\.(avi|mov|mpg|mp4|wmv|m4v)$' }
+	Office     = @{ Color = 'DarkRed'; Pattern = '\.(xls|xlsx|xlsm|pdf|docx|doc|ppt|pptx|sdc|sdd|ott|odf|pub|rtf)$' }
+        Compressed = @{ Color = 'Green'; Pattern = '\.(7z|zip|tar|gz|rar|jar|war)$' }
     }
     Service = @{
         Default = @{ Color = 'White' }
@@ -40,7 +45,7 @@ $global:PSColor = @{
         LineNumber = @{ Color = 'Yellow' }
         Line       = @{ Color = 'White' }
     }
-	NoMatch = @{
+    NoMatch = @{
         Default    = @{ Color = 'White' }
         Path       = @{ Color = 'Cyan'}
         LineNumber = @{ Color = 'Yellow' }
