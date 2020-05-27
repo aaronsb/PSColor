@@ -12,19 +12,19 @@
 RootModule = 'PSColor.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0.0'
+ModuleVersion = '2.0.0.0'
 
 # ID used to uniquely identify this module
-GUID = 'f521f5dc-fd57-4b62-ade3-cba7b4e3fafe'
+GUID = '04ff7250-50e1-4f11-adc8-d1b8034981b4'
 
 # Author of this module
-Author = 'Various'
+Author = 'Aaron Bockelie'
 
 # Company or vendor of this module
 # CompanyName = 'Unknown'
 
 # Copyright statement for this module
-Copyright = '(c) 2020 Various Public Contributions'
+Copyright = '(c) 2016, 2020 David Lindblad, Aaron Bockelie'
 
 # Description of the functionality provided by this module
 Description = 'Basic color highlighting'

@@ -63,10 +63,10 @@ function FileInfo {
     if($script:showHeader)
     {
        Write-Host
-       Write-Host "    Directory: " -noNewLine
-       Write-Host " $(pwd)`n" -foregroundcolor "Green"
-       Write-Host "Mode                LastWriteTime     Length Name" -foregroundcolor "Green"
-       Write-Host "----                -------------     ------ ----" -foregroundcolor "DarkGreen"
+       Write-Host "    Directory: " -foregroundcolor $PSColor.Meta.Directory.Color
+       Write-Host " $(pwd)`n" -foregroundcolor $PSColor.Meta.DirectoryPath.Color
+       Write-Host "Mode                LastWriteTime     Length Name" -foregroundcolor $PSColor.Meta.Row.Color
+       Write-Host "----                -------------     ------ ----" -foregroundcolor $PSColor.Meta.Divider.Color
        $script:showHeader=$false
     }
 
