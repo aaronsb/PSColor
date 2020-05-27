@@ -10,6 +10,8 @@ Add-Type -assemblyname System.ServiceProcess
 
 
 Function Get-PSColorConfig {
+    [CmdletBinding()]
+    Param()
     #generate path to json color defition file
     $PSColorTablePath = Join-Path -Path (Get-ChildItem $profile.CurrentUserCurrentHost).DirectoryName -Childpath PSColorTable.json
 
@@ -61,7 +63,7 @@ Function Get-PSColorConfig {
             }
         }
         $global:PSColor = @{}
-        Write-Verbose "Loaded Colors"
+        Write-Verbose "Loaded PSColors"
         (Get-Content $PSColorTablePath | ConvertFrom-Json).psobject.properties | ForEach-Object { $global:PSColor[$_.Name] = $_.Value }
     }
 }
