@@ -114,6 +114,10 @@ function FileInfo {
     {
         Write-Color-LS $global:PSColor.File.Compressed.Color $file
     }
+    elseif ($compressed.IsMatch($file.Name))
+    {
+        Write-Color-LS $global:PSColor.File.Temporary.Color $file
+    }
     else
     {
         Write-Color-LS $global:PSColor.File.Default.Color $file
