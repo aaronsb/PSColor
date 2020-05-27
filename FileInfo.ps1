@@ -65,8 +65,8 @@ function FileInfo {
        Write-Host
        Write-Host "    Directory: " -noNewLine
        Write-Host " $(pwd)`n" -foregroundcolor "Green"
-       Write-Host "Mode                LastWriteTime     Length Name"
-       Write-Host "----                -------------     ------ ----"
+       Write-Host "Mode                LastWriteTime     Length Name" -foregroundcolor "Green"
+       Write-Host "----                -------------     ------ ----" -foregroundcolor "DarkGreen"
        $script:showHeader=$false
     }
 
@@ -114,7 +114,7 @@ function FileInfo {
     {
         Write-Color-LS $global:PSColor.File.Compressed.Color $file
     }
-    elseif ($compressed.IsMatch($file.Name))
+    elseif ($temporary.IsMatch($file.Name))
     {
         Write-Color-LS $global:PSColor.File.Temporary.Color $file
     }
