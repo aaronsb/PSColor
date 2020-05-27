@@ -26,11 +26,12 @@ Function Get-PSColorConfig {
                 Executable = @{ Color = 'Red'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg|msi)$' }
                 Machine    = @{ Color = 'Blue'; Pattern = '\.(bin|dll|iso|img|ovf|ova)$' }
                 Text       = @{ Color = 'Yellow'; Pattern = '\.(txt|cfg|conf|ini|csv|log|config|xml|yml|md|markdown)$' }
-            Image      = @{ Color = 'DarkYellow'; Pattern = '\.(jpg|gif|bmp|jpeg|tif|tiff|png|psd|ico)$' }
-            Audio      = @{ Color = 'DarkBlue'; Pattern = '\.(mp3|aif|wav|wma|aif|iff|m4a)$' }
-            Video      = @{ Color = 'DarkCyan'; Pattern = '\.(avi|mov|mpg|mp4|wmv|m4v)$' }
-            Office     = @{ Color = 'DarkRed'; Pattern = '\.(xls|xlsx|xlsm|pdf|docx|doc|ppt|pptx|sdc|sdd|ott|odf|pub|rtf|vsd|vsdx)$' }
+                Image      = @{ Color = 'DarkYellow'; Pattern = '\.(jpg|gif|bmp|jpeg|tif|tiff|png|psd|ico)$' }
+                Audio      = @{ Color = 'DarkBlue'; Pattern = '\.(mp3|aif|wav|wma|aif|iff|m4a)$' }
+                Video      = @{ Color = 'DarkCyan'; Pattern = '\.(avi|mov|mpg|mp4|wmv|m4v)$' }
+                Office     = @{ Color = 'DarkRed'; Pattern = '\.(xls|xlsx|xlsm|pdf|docx|doc|ppt|pptx|sdc|sdd|ott|odf|pub|rtf|vsd|vsdx)$' }
                 Compressed = @{ Color = 'Green'; Pattern = '\.(7z|zip|tar|gz|rar|jar|war)$' }
+                Temporary  = @{ Color = 'Red'; Pattern = '\.(tmp|old|foo|baz|bak)$'}
             }
             Service = @{
                 Default = @{ Color = 'White' }
