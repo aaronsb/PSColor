@@ -59,17 +59,20 @@ function FileInfo {
         $global:PSColor.File.Office.Pattern, $regex_opts)
     $compressed = New-Object System.Text.RegularExpressions.Regex(
         $global:PSColor.File.Compressed.Pattern, $regex_opts)
+    $temporary = New-Object System.Text.RegularExpressions.Regex(
+        $global:PSColor.File.Temporary.Pattern, $regex_opts)
 
+    
     if($script:showHeader)
     {
        Write-Host
-       Write-Host "    Directory: " -foregroundcolor $PSColor.Meta.Directory.Color
-       Write-Host " $(pwd)`n" -foregroundcolor $PSColor.Meta.DirectoryPath.Color
-       Write-Host "Mode                LastWriteTime     Length Name" -foregroundcolor $PSColor.Meta.Row.Color
-       Write-Host "----                -------------     ------ ----" -foregroundcolor $PSColor.Meta.Divider.Color
+       Write-Host "    Directory: " -foregroundcolor ($PSColor.Meta.Directory.Color) -NoNewline
+       Write-Host " $(pwd)`n" -foregroundcolor ($PSColor.Meta.DirectoryPath.Color)
+       Write-Host "Mode                LastWriteTime     Length Name" -foregroundcolor ($PSColor.Meta.Row.Color)
+       Write-Host "----                -------------     ------ ----" -foregroundcolor ($PSColor.Meta.Divider.Color)
        $script:showHeader=$false
     }
-
+    
     if ($hidden.IsMatch($file.Name))
     {
         Write-Color-LS $global:PSColor.File.Hidden.Color $file

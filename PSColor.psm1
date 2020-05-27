@@ -11,10 +11,12 @@ Add-Type -assemblyname System.ServiceProcess
 
 Function Get-PSColorConfig {
     [CmdletBinding()]
-    Param()
+    Param([switch]$Defaults)
     #generate path to json color defition file
     $PSColorTablePath = Join-Path -Path (Get-ChildItem $profile.CurrentUserCurrentHost).DirectoryName -Childpath PSColorTable.json
-
+    if ($Defaults) {
+        Remove-Item $PSColorTablePath
+    }
     #if the file doesn't exist, generate a template config objcet
     if (!(Test-Path $PSColorTablePath)) {
         $global:PSColor = @{
