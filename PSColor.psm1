@@ -67,8 +67,8 @@ Function Get-PSColorConfig {
             Write-Verbose "Overwriting PSColor global variable"
             $OMP = get-module -ListAvailable | ?{$_.Name -match "oh-my-posh"}
             if ($OMP) {
-                Write-Verbose "oh-my-posh detected, which instances it's own PSColor preference dictionary"
-                Write-Verbose "This should work, but check for compatibility if you experience weirdness."
+                Write-Warning "oh-my-posh detected, which instances it's own PSColor preference dictionary"
+                Write-Warning "This should work, but check for compatibility if you experience weirdness."
             }
         }
         $global:PSColor = @{}
