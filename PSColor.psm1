@@ -18,6 +18,12 @@ Function Get-PSColorConfig {
     #if the file doesn't exist, generate a template config objcet
     if (!(Test-Path $PSColorTablePath)) {
         $global:PSColor = @{
+            Meta = @{
+                Directory = @{ Color = 'DarkGreen' }
+                Row = @{ Color = 'Green' }
+                Divider = @{ Color = 'DarkGreen' }
+                DirectoryPath = @{ Color = 'Green' }     
+            }
             File = @{
                 Default    = @{ Color = 'White' }
                 Directory  = @{ Color = 'Cyan'}
